@@ -65,6 +65,36 @@ public class GridDir05_5 extends AppCompatActivity {
                 }
             });
         }
+
+        btnPlus.setOnClickListener(btnListener);
+        btnMinus.setOnClickListener(btnListener);
+        btnMulti.setOnClickListener(btnListener);
+        btnDivide.setOnClickListener(btnListener);
     }
+
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Button eventBtn = (Button) v;
+            String editStr1 = edit1.getText().toString();
+            String editStr2 = edit2.getText().toString();
+
+            int editNum1 = Integer.parseInt(editStr1);
+            int editNum2 = Integer.parseInt(editStr2);
+            int result = 0;
+
+            if(eventBtn == btnPlus){
+                result = editNum1 + editNum2;
+            }else if(eventBtn == btnMinus){
+                result = editNum1 - editNum2;
+            }else if(eventBtn == btnMulti){
+                result = editNum1 * editNum2;
+            }else{
+                result = editNum1 / editNum2;
+            }
+
+            textResult.setText("계산결과: " +result);
+        }
+    };
 
 }
